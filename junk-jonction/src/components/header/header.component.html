@@ -29,6 +29,15 @@
       <lucide-angular [img]="List"></lucide-angular>
       <p class="text-center flex-1">Voir les pollutions</p>
     </a>
+
+    <a
+      routerLink="/pollution/favorites"
+      (click)="toggleDropdown()"
+      class="flex gap-2 hover:scale-110 transition-all duration-300"
+    >
+      <lucide-angular [img]="Heart"></lucide-angular>
+      <p class="text-center flex-1">Mes favoris</p>
+    </a>
   </div>
 
   <a

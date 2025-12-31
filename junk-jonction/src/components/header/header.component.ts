@@ -8,6 +8,7 @@ import {
   User,
   ChevronUp,
   OctagonAlert,
+  Heart,
 } from 'lucide-angular';
 
 @Component({
@@ -23,6 +24,7 @@ export class HeaderComponent {
   readonly List = List;
   readonly ChevronUp = ChevronUp;
   readonly OctagonAlert = OctagonAlert;
+  readonly Heart = Heart;
 
   dropdownOpened: boolean = false;
 

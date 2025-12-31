@@ -9,13 +9,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
   private apiURL: string = environment.apiURL;
+  private route = 'users';
   constructor(private http: HttpClient) {}
 
   signup(userSignupData: UserSignupData): Observable<UserData> {
-    return this.http.post<UserData>(`${this.apiURL}/utilisateur/signup`, userSignupData);
+    return this.http.post<UserData>(`${this.apiURL}/users/signup`, userSignupData);
   }
 
   getAllUsers(): Observable<UserData[]> {
-    return this.http.get<UserData[]>(`${this.apiURL}/utilisateur`);
+    return this.http.get<UserData[]>(`${this.apiURL}/users`);
   }
 }
