@@ -5,12 +5,15 @@ import {
   getUserById,
   updateUser,
   deleteUser,
+  getUser,
 } from "../controllers/user.controller";
 
 const router = Router();
 
 // CREATE - POST /api/users
 router.post("/signup", createUser);
+
+router.post("/signin", getUser);
 
 // READ - GET /api/users
 router.get("/", getAllUsers);

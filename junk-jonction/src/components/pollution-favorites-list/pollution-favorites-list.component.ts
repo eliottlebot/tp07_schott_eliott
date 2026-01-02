@@ -27,7 +27,6 @@ export class PollutionFavoritesList {
   favoritesCount$ = this.favoriteService.favoritesCount$;
 
   constructor() {
-    // Récupérer les pollutions favorites
     this.favoritePollutions$ = this.favoriteService
       .getFavorites$()
       .pipe(

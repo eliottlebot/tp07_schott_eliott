@@ -4,4 +4,5 @@ interface UserData {
   pass: string;
   nom: string;
   prenom: string;
+  token?: string;
 }

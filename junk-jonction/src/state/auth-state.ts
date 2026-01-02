@@ -1,6 +1,6 @@
 import { State, Selector, StateContext, Action } from '@ngxs/store';
 import { Injectable } from '@angular/core';
-import { AuthStateModel } from '../models/auth-state-model';
+import { AuthStateModel } from '../models/state/auth-state-model';
 import { AuthAction } from '../actions/auth-actions';
 
 @State<AuthStateModel>({

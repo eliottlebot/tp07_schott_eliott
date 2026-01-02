@@ -6,22 +6,23 @@ import {
   updatePollution,
   deletePollution,
 } from "../controllers/pollution.controller";
+import { requireAuth } from "../auth/requireAuth";
 
 const router = Router();
 
 // CREATE - POST /api/pollutions
-router.post("/", createPollution);
+router.post("/", requireAuth, createPollution);
 
 // READ - GET /api/pollutions
-router.get("/", getAllPollutions);
+router.get("/", requireAuth, getAllPollutions);
 
 // READ - GET /api/pollutions/:id
-router.get("/:id", getPollutionById);
+router.get("/:id", requireAuth, getPollutionById);
 
 // UPDATE - PUT /api/pollutions/:id
-router.put("/:id", updatePollution);
+router.put("/:id", requireAuth, updatePollution);
 
 // DELETE - DELETE /api/pollutions/:id
-router.delete("/:id", deletePollution);
+router.delete("/:id", requireAuth, deletePollution);
 
 export default router;

@@ -2,8 +2,9 @@ import { Request, Response } from "express";
 import { prisma } from "../../lib/prisma";
 import { asyncHandler } from "../utils/asyncHandler";
 import { ApiError } from "../middleware/errorHandler";
+import jwt from "jsonwebtoken";
+import { generateJwt } from "../utils/jwt-utils";
 
-// CREATE - Créer un nouvel utilisateur
 export const createUser = asyncHandler(async (req: Request, res: Response) => {
   const { nom, prenom, login, pass } = req.body;
 
@@ -11,7 +12,6 @@ export const createUser = asyncHandler(async (req: Request, res: Response) => {
     throw new ApiError(400, "Le nom, login et mot de passe sont requis");
   }
 
-  // Vérifier si le login existe déjà
   const existingUser = await prisma.user.findUnique({
     where: {
       login,
@@ -27,16 +27,54 @@ export const createUser = asyncHandler(async (req: Request, res: Response) => {
       nom,
       prenom,
       login,
-      pass, // Note: En production, il faudrait hasher le mot de passe
+      pass,
     },
   });
 
-  // Ne pas retourner le mot de passe
   const { pass: _, ...userWithoutPassword } = user;
+
+  const token = generateJwt(user.id);
 
   res.status(201).json({
     success: true,
-    data: userWithoutPassword,
+    data: {
+      user: userWithoutPassword,
+      token,
+    },
+  });
+});
+
+export const getUser = asyncHandler(async (req: Request, res: Response) => {
+  const { login, pass } = req.body;
+
+  if (!login || !pass) {
+    throw new ApiError(400, "Le login et le mot de passe sont requis");
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      login,
+    },
+  });
+
+  if (!user) {
+    throw new ApiError(401, "Identifiants invalides");
+  }
+
+  if (user.pass !== pass) {
+    throw new ApiError(401, "Mauvais mot de passe");
+  }
+
+  const { pass: _, ...userWithoutPassword } = user;
+
+  const token = generateJwt(user.id);
+
+  res.status(200).json({
+    success: true,
+    data: {
+      user: userWithoutPassword,
+      token,
+    },
   });
 });
 
