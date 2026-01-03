@@ -60,6 +60,7 @@ export class SignupFormComponent implements OnInit {
       .pipe(first())
       .subscribe((userData) => {
         this.store.dispatch(new SetToken(userData.token));
+        this.router.navigate(['/']);
       });
   }
 
