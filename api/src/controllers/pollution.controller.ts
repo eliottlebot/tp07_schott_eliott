@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { asyncHandler } from "../utils/asyncHandler";
-import { ApiError } from "../middleware/errorHandler";
-import { prisma } from "../lib/prisma";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { ApiError } from "../middleware/errorHandler.js";
+import { prisma } from "../lib/prisma.js";
 
 // CREATE - Créer une nouvelle pollution
 export const createPollution = asyncHandler(

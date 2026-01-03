@@ -1,8 +1,8 @@
 import express, { Application } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import routes from "./routes/index";
-import { errorHandler } from "./middleware/errorHandler";
+import routes from "./routes/index.js";
+import { errorHandler } from "./middleware/errorHandler.js";
 
 // Charger les variables d'environnement
 dotenv.config();

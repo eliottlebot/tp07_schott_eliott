@@ -5,8 +5,8 @@ import {
   getPollutionById,
   updatePollution,
   deletePollution,
-} from "../controllers/pollution.controller";
-import { requireAuth } from "../auth/requireAuth";
+} from "../controllers/pollution.controller.js";
+import { requireAuth } from "../auth/requireAuth.js";
 
 const router = Router();
 

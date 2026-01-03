@@ -1,9 +1,8 @@
 import { Request, Response } from "express";
-import { prisma } from "../lib/prisma";
-import { asyncHandler } from "../utils/asyncHandler";
-import { ApiError } from "../middleware/errorHandler";
-import jwt from "jsonwebtoken";
-import { generateJwt } from "../utils/jwt-utils";
+import { prisma } from "../lib/prisma.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { ApiError } from "../middleware/errorHandler.js";
+import { generateJwt } from "../utils/jwt-utils.js";
 
 export const createUser = asyncHandler(async (req: Request, res: Response) => {
   const { nom, prenom, login, pass } = req.body;

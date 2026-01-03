@@ -1,6 +1,6 @@
 import { Router } from "express";
-import pollutionRoutes from "./pollution.routes";
-import userRoutes from "./user.routes";
+import pollutionRoutes from "./pollution.routes.js";
+import userRoutes from "./user.routes.js";
 
 const router = Router();
 
