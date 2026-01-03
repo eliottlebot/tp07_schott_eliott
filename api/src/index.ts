@@ -30,14 +30,14 @@ app.get("/", (req, res) => {
     message: "Bienvenue sur l'API V2 avec TypeScript, Express et Prisma",
     version: "2.0.0",
     endpoints: {
-      pollutions: "/api/pollutions",
-      users: "/api/users",
+      pollutions: "/pollutions",
+      users: "/users",
     },
   });
 });
 
 // Routes de l'API
-app.use("/api", routes);
+app.use("/", routes);
 
 // Middleware de gestion des erreurs (doit être en dernier)
 app.use(errorHandler);
