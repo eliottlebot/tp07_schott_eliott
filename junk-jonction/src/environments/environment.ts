@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiURL: 'https://tp07-schott-eliott-latest.onrender.com/api',
+  apiURL: 'https://tp07-schott-eliott-api.onrender.com',
 };
